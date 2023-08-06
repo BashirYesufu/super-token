@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:super_token/super_button.dart';
-import 'package:super_token/super_color.dart';
-import 'package:super_token/super_field.dart';
-import 'package:super_token/super_images.dart';
-import 'package:super_token/super_password_field.dart';
+import 'package:super_token/widgets/super_button.dart';
+import 'package:super_token/constant/super_color.dart';
+import 'package:super_token/widgets/super_field.dart';
+import 'package:super_token/constant/super_images.dart';
+import 'package:super_token/widgets/super_password_field.dart';
 
 class LoginUI extends StatefulWidget {
   const LoginUI({super.key});
@@ -42,9 +42,12 @@ class _LoginUIState extends State<LoginUI> {
               hintText: 'Enter Email',
               keyboardType: TextInputType.emailAddress,
             ),
-            SuperPasswordField(
-              label: 'Password',
-              hintText: 'Enter Password',
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 24.0),
+              child: SuperPasswordField(
+                label: 'Password',
+                hintText: 'Enter Password',
+              ),
             ),
             SuperButton(
               label: 'Login',
@@ -78,6 +81,22 @@ class _LoginUIState extends State<LoginUI> {
                   child: SuperButton(
                     backgroundColor: Colors.white,
                     borderColor: Colors.grey,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: SvgPicture.asset(
+                            SuperImages.google,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text('Google'),
+                        )
+                      ],
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -88,14 +107,51 @@ class _LoginUIState extends State<LoginUI> {
                     backgroundColor: Colors.white,
                     borderColor: Colors.grey,
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset(SuperImages.apple),
-                        Text('Apple')
+                        SizedBox(
+                          height: 24,
+                          width: 24,
+                          child: SvgPicture.asset(
+                            SuperImages.apple,
+                            fit: BoxFit.scaleDown,
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: Text('Apple'),
+                        )
                       ],
                     ),
                   ),
                 ),
               ],
+            ),
+            Center(
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width / 2,
+                child: SuperButton(
+                  backgroundColor: Colors.white,
+                  borderColor: Colors.grey,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 24,
+                        width: 24,
+                        child: SvgPicture.asset(
+                          SuperImages.facebook,
+                          fit: BoxFit.scaleDown,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Text('Facebook'),
+                      )
+                    ],
+                  ),
+                ),
+              ),
             )
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:super_token/super_color.dart';
+import 'package:super_token/constant/super_color.dart';
 
 class SuperButton extends StatelessWidget {
   final String? label;
