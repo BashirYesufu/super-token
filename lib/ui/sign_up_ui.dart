@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:super_token/ui/sign_up_ui.dart';
+import 'package:super_token/ui/login_ui.dart';
 import 'package:super_token/widgets/super_button.dart';
 import 'package:super_token/constant/super_color.dart';
 import 'package:super_token/widgets/super_field.dart';
 import 'package:super_token/constant/super_images.dart';
 import 'package:super_token/widgets/super_password_field.dart';
 
-class LoginUI extends StatefulWidget {
-  const LoginUI({super.key});
+class SignUpUI extends StatefulWidget {
+  const SignUpUI({super.key});
 
   @override
-  State<LoginUI> createState() => _LoginUIState();
+  State<SignUpUI> createState() => _SignUpUIState();
 }
 
-class _LoginUIState extends State<LoginUI> {
+class _SignUpUIState extends State<SignUpUI> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login'),
+        title: Text('Sign Up'),
         backgroundColor: SuperColor.primaryColor,
       ),
       body: SingleChildScrollView(
@@ -32,9 +32,9 @@ class _LoginUIState extends State<LoginUI> {
             Padding(
               padding: const EdgeInsets.only(top: 16.0, bottom: 40),
               child: Text(
-                  'Hello, Welcome back',
+                'Hello,',
                 style: TextStyle(
-                  fontSize: 28
+                    fontSize: 28
                 ),
               ),
             ),
@@ -51,7 +51,7 @@ class _LoginUIState extends State<LoginUI> {
               ),
             ),
             SuperButton(
-              label: 'Login',
+              label: 'Signup',
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -65,7 +65,7 @@ class _LoginUIState extends State<LoginUI> {
                     ),
                   ),
                   Flexible(
-                    child: Text('or Login with'),
+                    child: Text('or Sign up with'),
                   ),
                   Flexible(
                     child: Divider(
@@ -163,15 +163,14 @@ class _LoginUIState extends State<LoginUI> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Don\'t have an account, '),
+              Text('Already have an account, '),
               InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpUI()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUI()));
                 },
-                child: Text(
-                  'Sign up',
-                  style: TextStyle(color: SuperColor.primaryColor),
-                ),
+                child: Text('Sign in', style: TextStyle(
+                    color: SuperColor.primaryColor
+                ),),
               ),
             ],
           ),
