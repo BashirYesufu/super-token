@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:super_token/super_color.dart';
 
-class ShillingPrimaryButton extends StatelessWidget {
+class SuperButton extends StatelessWidget {
   final String? label;
   final Color backgroundColor;
   final Color textColor;
@@ -10,7 +10,7 @@ class ShillingPrimaryButton extends StatelessWidget {
   final Widget? child;
   final EdgeInsetsGeometry? padding;
 
-  const ShillingPrimaryButton({
+  const SuperButton({
     this.onTap,
     this.label,
     this.textColor = Colors.white,
@@ -30,7 +30,7 @@ class ShillingPrimaryButton extends StatelessWidget {
         child: Material(
           color: backgroundColor,
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+              borderRadius: BorderRadius.circular(8),
               side: BorderSide(
                 color: borderColor ?? backgroundColor,
                 width: 1.0,
