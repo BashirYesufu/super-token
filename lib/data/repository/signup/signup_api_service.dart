@@ -3,16 +3,16 @@ import '../../../models/login_response.dart';
 import '../../api/api_constants.dart';
 import '../../network_manager/network_manager.dart';
 
-class LoginApiService {
+class SignUpApiService {
 
   final NetworkManager _networkManager = NetworkManager();
 
-  Future<AuthResponse> login(String email, String password) async {
+  Future<AuthResponse> signup(String email, String password) async {
     var completer = Completer<AuthResponse>();
     try {
       final response = await _networkManager.networkRequestManager(
         RequestType.POST,
-        ApiConstant.login,
+        ApiConstant.signup,
         body: {
           "email": email,
           "password": password,

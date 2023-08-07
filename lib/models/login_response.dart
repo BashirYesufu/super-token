@@ -1,7 +1,7 @@
-class LoginResponse {
+class AuthResponse {
 
-  LoginResponse();
+  AuthResponse();
 
-  factory LoginResponse.fromJson(Map<String, dynamic> json) => LoginResponse();
+  factory AuthResponse.fromJson(Map<String, dynamic> json) => AuthResponse();
 
 }
