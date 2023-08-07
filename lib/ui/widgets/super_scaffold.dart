@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:super_token/constant/super_color.dart';
 
-import '../constant/super_json.dart';
+import '../../constant/super_json.dart';
 
 class SuperScaffold extends StatefulWidget {
   final Stream<bool>? loadingStream;

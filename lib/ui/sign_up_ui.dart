@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:super_token/ui/login_ui.dart';
-import 'package:super_token/widgets/super_button.dart';
 import 'package:super_token/constant/super_color.dart';
-import 'package:super_token/widgets/super_field.dart';
 import 'package:super_token/constant/super_images.dart';
-import 'package:super_token/widgets/super_password_field.dart';
-import 'package:super_token/widgets/super_scaffold.dart';
+import 'package:super_token/ui/widgets/super_button.dart';
+import 'package:super_token/ui/widgets/super_field.dart';
+import 'package:super_token/ui/widgets/super_password_field.dart';
+import 'package:super_token/ui/widgets/super_scaffold.dart';
 
 class SignUpUI extends StatefulWidget {
   const SignUpUI({super.key});
