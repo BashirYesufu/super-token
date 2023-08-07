@@ -165,12 +165,14 @@ class _SignUpUIState extends State<SignUpUI> {
             children: [
               Text('Already have an account, '),
               InkWell(
-                onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginUI()));
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginUI()));
                 },
-                child: Text('Sign in', style: TextStyle(
-                    color: SuperColor.primaryColor
-                ),),
+                child: Text(
+                  'Login',
+                  style: TextStyle(color: SuperColor.primaryColor),
+                ),
               ),
             ],
           ),

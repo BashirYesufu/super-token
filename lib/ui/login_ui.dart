@@ -166,7 +166,7 @@ class _LoginUIState extends State<LoginUI> {
               Text('Don\'t have an account, '),
               InkWell(
                 onTap: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignUpUI()));
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpUI()));
                 },
                 child: Text(
                   'Sign up',
