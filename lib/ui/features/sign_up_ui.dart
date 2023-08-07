@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:super_token/ui/sign_up_ui.dart';
+import 'package:super_token/ui/blocs/signup_bloc.dart';
+import 'package:super_token/ui/features/login_ui.dart';
 import 'package:super_token/constant/super_color.dart';
 import 'package:super_token/constant/super_images.dart';
 import 'package:super_token/ui/widgets/super_button.dart';
@@ -8,19 +9,41 @@ import 'package:super_token/ui/widgets/super_field.dart';
 import 'package:super_token/ui/widgets/super_password_field.dart';
 import 'package:super_token/ui/widgets/super_scaffold.dart';
 
-class LoginUI extends StatefulWidget {
-  const LoginUI({super.key});
+import 'home_ui.dart';
+
+class SignUpUI extends StatefulWidget {
+  const SignUpUI({super.key});
 
   @override
-  State<LoginUI> createState() => _LoginUIState();
+  State<SignUpUI> createState() => _SignUpUIState();
 }
 
-class _LoginUIState extends State<LoginUI> {
+class _SignUpUIState extends State<SignUpUI> {
+
+  TextEditingController emailTC = TextEditingController();
+  TextEditingController passwordTC = TextEditingController();
+  final SignUpBloc _bloc = SignUpBloc();
+
+  @override
+  void initState() {
+    _bloc.signupResponse.listen((response) {
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
+        return HomeUI();
+      }));
+    }, onError: (error){
+      var snackBar = SnackBar(
+        content: Text(error),
+      );
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return SuperScaffold(
-      appBarTitle: 'Login',
+      loadingStream: _bloc.progressStatusObservable,
+      appBarTitle: 'Sign up',
       hasBackButton: false,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -31,15 +54,16 @@ class _LoginUIState extends State<LoginUI> {
             Padding(
               padding: const EdgeInsets.only(top: 16.0, bottom: 40),
               child: Text(
-                  'Hello, Welcome back',
+                'Hello,',
                 style: TextStyle(
-                  fontSize: 28
+                    fontSize: 28
                 ),
               ),
             ),
             SuperField(
               label: 'Email',
               hintText: 'Enter Email',
+              controller: emailTC,
               keyboardType: TextInputType.emailAddress,
             ),
             Padding(
@@ -47,10 +71,12 @@ class _LoginUIState extends State<LoginUI> {
               child: SuperPasswordField(
                 label: 'Password',
                 hintText: 'Enter Password',
+                controller: passwordTC,
               ),
             ),
             SuperButton(
-              label: 'Login',
+              label: 'Signup',
+              onTap: ()=> _bloc.signup(email: emailTC.text, password: passwordTC.text),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24.0),
@@ -64,7 +90,7 @@ class _LoginUIState extends State<LoginUI> {
                     ),
                   ),
                   Flexible(
-                    child: Text('or Login with'),
+                    child: Text('or Sign up with'),
                   ),
                   Flexible(
                     child: Divider(
@@ -162,13 +188,14 @@ class _LoginUIState extends State<LoginUI> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Don\'t have an account, '),
+              Text('Already have an account, '),
               InkWell(
-                onTap: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpUI()));
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginUI()));
                 },
                 child: Text(
-                  'Sign up',
+                  'Login',
                   style: TextStyle(color: SuperColor.primaryColor),
                 ),
               ),

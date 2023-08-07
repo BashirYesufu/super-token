@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:super_token/models/login_response.dart';
@@ -29,7 +30,8 @@ class LoginBloc extends Bloc {
     }
     try {
       _showProgressSubject.sink.add(true);
-        await _repo.login(email, password).then((response) {
+      FocusManager.instance.primaryFocus?.unfocus();
+      await _repo.login(email, password).then((response) {
           _loginSubject.sink.add(response);
           _showProgressSubject.sink.add(false);
         }, onError: (e) {

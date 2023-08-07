@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:super_token/ui/login_ui.dart';
+import 'package:super_token/ui/features/login_ui.dart';
 import 'package:supertokens_flutter/supertokens.dart';
 
 import 'data/config.dart';

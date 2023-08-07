@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:super_token/models/login_response.dart';
@@ -14,7 +15,7 @@ class SignUpBloc extends Bloc {
   final _signupSubject = PublishSubject<AuthResponse>();
   Stream<AuthResponse> get signupResponse => _signupSubject.stream;
 
-  void login({required String email, required String password}) async {
+  void signup({required String email, required String password}) async {
     if (email.isEmpty) {
       _signupSubject.sink.addError('Email cannot be empty');
       return;
@@ -29,6 +30,7 @@ class SignUpBloc extends Bloc {
     }
     try {
       _showProgressSubject.sink.add(true);
+      FocusManager.instance.primaryFocus?.unfocus();
       await _repo.signup(email, password).then((response) {
         _signupSubject.sink.add(response);
         _showProgressSubject.sink.add(false);
