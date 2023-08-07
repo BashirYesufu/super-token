@@ -9,6 +9,7 @@ import 'package:super_token/ui/widgets/super_field.dart';
 import 'package:super_token/ui/widgets/super_password_field.dart';
 import 'package:super_token/ui/widgets/super_scaffold.dart';
 
+import 'forgot_password_ui.dart';
 import 'home_ui.dart';
 
 class LoginUI extends StatefulWidget {
@@ -77,6 +78,12 @@ class _LoginUIState extends State<LoginUI> {
             SuperButton(
               label: 'Login',
               onTap: ()=> _bloc.login(email: emailTC.text, password: passwordTC.text),
+            ),
+            InkWell(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPasswordUI()));
+              },
+              child: Text('Forgot Password?'),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 24.0),
