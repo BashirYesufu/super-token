@@ -6,6 +6,7 @@ import 'package:super_token/constant/super_color.dart';
 import 'package:super_token/widgets/super_field.dart';
 import 'package:super_token/constant/super_images.dart';
 import 'package:super_token/widgets/super_password_field.dart';
+import 'package:super_token/widgets/super_scaffold.dart';
 
 class SignUpUI extends StatefulWidget {
   const SignUpUI({super.key});
@@ -18,11 +19,9 @@ class _SignUpUIState extends State<SignUpUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Sign Up'),
-        backgroundColor: SuperColor.primaryColor,
-      ),
+    return SuperScaffold(
+      appBarTitle: 'Sign up',
+      hasBackButton: false,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(

@@ -19,7 +19,7 @@ class NetworkManager{
   );
   Dio client = Dio(options);
 
-  Future<SharedApiResponse> networkRequestManager(RequestType vrxRequestType,String requestUrl, {dynamic body, queryParameters,
+  Future<SharedApiResponse> makeNetworkRequest(RequestType vrxRequestType,String requestUrl, {dynamic body, queryParameters,
     bool useAuth = true, BehaviorSubject<int>? progressStream, File? backFile}) async{
 
     late SharedApiResponse apiResponse;

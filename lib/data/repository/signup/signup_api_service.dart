@@ -10,7 +10,7 @@ class SignUpApiService {
   Future<AuthResponse> signup(String email, String password) async {
     var completer = Completer<AuthResponse>();
     try {
-      final response = await _networkManager.networkRequestManager(
+      final response = await _networkManager.makeNetworkRequest(
         RequestType.POST,
         ApiConstant.signup,
         body: {

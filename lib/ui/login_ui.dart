@@ -7,6 +7,8 @@ import 'package:super_token/widgets/super_field.dart';
 import 'package:super_token/constant/super_images.dart';
 import 'package:super_token/widgets/super_password_field.dart';
 
+import '../widgets/super_scaffold.dart';
+
 class LoginUI extends StatefulWidget {
   const LoginUI({super.key});
 
@@ -18,11 +20,9 @@ class _LoginUIState extends State<LoginUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Login'),
-        backgroundColor: SuperColor.primaryColor,
-      ),
+    return SuperScaffold(
+      appBarTitle: 'Login',
+      hasBackButton: false,
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
